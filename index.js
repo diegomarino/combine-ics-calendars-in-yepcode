@@ -1,12 +1,12 @@
 /**
- * Calendar Merger and Uploader
+ * Calendar Combiner and Uploader
  *
  * This script performs the following operations:
  * 1. Fetches events from multiple iCalendar (.ics) sources.
- * 2. Merges these events into a single calendar.
+ * 2. Combines these events into a single calendar.
  * 3. Handles recurring events, expanding them for a one-year period.
  * 4. Adjusts event times to the specified timezone.
- * 5. Generates a new .ics file with the merged events.
+ * 5. Generates a new .ics file with the combined events.
  * 6. Uploads the resulting .ics file to a DigitalOcean Space and makes it publicly accessible.
  *
  * The script uses:
@@ -77,8 +77,8 @@ function createUrlSafeString(str) {
     .replace(/^-+|-+$/g, "");
 }
 
-// Main function to merge calendars
-async function mergeCalendars() {
+// Main function to combine calendars
+async function combineCalendars() {
   // Fetch all calendars
   const calendarEventsArray = await Promise.all(
     calendarInputUrls.map(async (url) => fetchCalendar(url))
@@ -140,8 +140,8 @@ const s3Client = new S3({
 // Main execution
 (async () => {
   try {
-    // Merge calendars
-    const mergedCalendar = await mergeCalendars();
+    // Combine calendars
+    const combinedCalendar = await combineCalendars();
 
     // Create URL-safe key from calendar name
     const urlSafeKey = `${createUrlSafeString(calendarName)}.ics`;
@@ -150,7 +150,7 @@ const s3Client = new S3({
     const putObjectCommand = new PutObjectCommand({
       Bucket: yepcode.env.DIGITALOCEAN_SPACES_BUCKET,
       Key: urlSafeKey,
-      Body: mergedCalendar,
+      Body: combinedCalendar,
       ACL: "public-read",
       ContentType: "text/calendar",
     });
