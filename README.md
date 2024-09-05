@@ -43,13 +43,13 @@ This project fetches events from multiple iCalendar (.ics) sources, combines the
 6. (Optional) To download the project using the YepCode CLI:
    - Install the YepCode CLI by following the instructions in the [YepCode documentation](https://docs.yepcode.io/cli/).
    - Log in to your YepCode account using the CLI.
-   - Use the `yepcode download` command to download your project:
+   - Use the `yepcode clone` ([link](https://www.npmjs.com/package/@yepcode/cli#yepcode-clone-team)) command to download your project:
 
      ```bash
-     yepcode download --project-id YOUR_PROJECT_ID --output-dir ./your-project-directory
+     yepcode clone [TEAM]
      ```
 
-   Replace `YOUR_PROJECT_ID` with your actual YepCode project ID and `./your-project-directory` with your desired output directory.
+   Replace `TEAM` with your team id
 
 ## Local Development (Optional)
 
