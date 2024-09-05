@@ -1,4 +1,4 @@
-# merge-ics-calendars-in-yepcode
+# Merge .ICS calendars in Yepcode
 
 This project fetches events from multiple iCalendar (.ics) sources, merges them into a single calendar, and uploads the result to a DigitalOcean Space. It is designed to run on the [YepCode platform](https://yepcode.io) every 10 minutes, but can be easily adapted to run in other Node.js environments.
 
